@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html >
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+<head>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body >
+
+
+
+  <form>
+	
+
+    <p>What did you buy? Please type in this field:</p>
+    <div id="input>">
+    <input id="title" type="text" placeholder="what did you get" />
+    <input id="date" type="text" placeholder="and when" />
+</div>
+
+
+    
+    <input type="button" value="let me know" onclick="insert()" />
+  </form>
+
+
+
+
+  <div class="input2">
+    <div id = "when" ></div>
+  <div id="display"></div>
+</div>
+
+  <div class ="bill">
+  	<img src = "bill2.jpg">
+
+</div>
+
+
+
+
+
+
+
+
+	<script src="jquery.js"></script>
+		<script>
+var titles  = [];
+var date  = [];
+
+var titleInput  = document.getElementById("title");
+var dateInput   = document.getElementById("date");
+
+var messageBox  = document.getElementById("display" );
+var messageBoxdate  = document.getElementById("when");
+
+function insert ( ) {
+ titles.push( titleInput.value );
+ date.push( dateInput.value );
+
+ 
+  
+ clearAndShow();
+}
+
+function clearAndShow () {
+  // Clear our fields
+  titleInput.value = "";
+  dateInput.value = "";
+
+  
+  // Show our output
+  messageBox.innerHTML = "";
+  messageBoxdate.innerHTML = "";
+  
+
+  messageBoxdate.innerHTML +=  date.join("<br/>")+ " > "+ "<br/>";
+  messageBox.innerHTML +=  titles.join("<br/>") + "<br/>";
+}
+
+
+$('.bill').on('mousedown', function (e) {
+
+    $(this).addClass('active');
+    
+    var oTop = e.pageY - $('.active').offset().top;
+    var oLeft = e.pageX - $('.active').offset().left;
+    
+    $(this).parents().on('mousemove', function (e) {
+
+        $('.active').offset({
+
+            top: e.pageY - oTop,
+            left: e.pageX - oLeft
+
+        }).on('mouseup', function () {
+
+            $(this).removeClass('active');
+
+        });
+        
+    });
+    
+    return false;    
+});
+
+$('.input2').on('mousedown', function (e) {
+
+    $(this).addClass('active');
+    
+    var oTop = e.pageY - $('.active').offset().top;
+    var oLeft = e.pageX - $('.active').offset().left;
+    
+    $(this).parents().on('mousemove', function (e) {
+
+        $('.active').offset({
+
+            top: e.pageY - oTop,
+            left: e.pageX - oLeft
+
+        }).on('mouseup', function () {
+
+            $(this).removeClass('active');
+
+        });
+        
+    });
+    
+    return false;    
+});
+
+$('.input2').click(function() {
+   // set ohters element to the initial level
+   $(this).siblings('.input2').css('z-index', 2010);
+   // set clicked element to a higher level
+   $(this).css('z-index', 2011);
+});
+$('.bill').click(function() {
+   // set ohters element to the initial level
+   $(this).siblings('.bill').css('z-index', 2010);
+   // set clicked element to a higher level
+   $(this).css('z-index', 2011);
+});
+
+		</script>
+
+</body>
+</html>
