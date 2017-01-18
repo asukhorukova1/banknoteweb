@@ -3,9 +3,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
 <head>
-
 	<link rel="stylesheet" type="text/css" href="styles.css">
-<!--   <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet"> -->
 </head>
 <body >
 
@@ -14,34 +12,27 @@
   <form>
 	
 
-    <p>What did you buy? <br> Please type in this field:</p>
+    <p>What did you buy? Please type in this field:</p>
     <div id="input>">
     <input id="title" type="text" placeholder="what did you get" />
     <input id="date" type="text" placeholder="and when" />
 </div>
 
-<div class='a'></div>
+
     
-    <input type="button" value="SAVE" onclick="insert()" />
+    <input type="button" value="let me know" onclick="insert()" />
   </form>
 
 
 
 
-  <div class="input2" >
+  <div class="input2">
     <div id = "when" ></div>
   <div id="display"></div>
 </div>
 
   <div class ="bill">
-    Hello,<br>
-my name is <span class="decima"> VA1253909486</span>. This is an attempt to capture my personal history and trace the consequences of my existence from <span class="decima">28.10.16</span> and till the moment I’m destroyed by the Central Bank.
-<br>
-<br>
-
-Please, contribute to my biography. Although to you I might look like every other banknote, I believe I am unique in the sequence of things that people exchange me for. 
-Thank you very much.
- <!--  	<img src = "thebill3.jpg"> -->
+  	<img src = "thebill3.jpg">
 
 </div>
 
@@ -148,65 +139,13 @@ $('.input2').on('mousedown', function (e) {
 });
 
 $('.input2').click(function() {
-   // set ohters element to the initial level
    $(this).siblings('.input2').css('z-index', 2010);
-   // set clicked element to a higher level
    $(this).css('z-index', 2011);
 });
 $('.bill').click(function() {
-   // set ohters element to the initial level
    $(this).siblings('.bill').css('z-index', 2010);
-   // set clicked element to a higher level
    $(this).css('z-index', 2011);
 });
-
-
-
-
-
-$(document).ready(function(){
-    animateDiv();
-    
-});
-
-function makeNewPosition(){
-    
-    // Get viewport dimensions (remove the dimension of the div)
-    var h = $(window).height() - 50;
-    var w = $(window).width() - 50;
-    
-    var nh = Math.floor(Math.random() * h);
-    var nw = Math.floor(Math.random() * w);
-    
-    return [nh,nw];    
-    
-}
-
-function animateDiv(){
-    var newq = makeNewPosition();
-    var oldq = $('.a').offset();
-    var speed = calcSpeed([oldq.top, oldq.left], newq);
-    
-    $('.a').animate({ top: newq[0], left: newq[1] }, speed, function(){
-      animateDiv();        
-    });
-    
-};
-
-function calcSpeed(prev, next) {
-    
-    var x = Math.abs(prev[1] - next[1]);
-    var y = Math.abs(prev[0] - next[0]);
-    
-    var greatest = x > y ? x : y;
-    
-    var speedModifier = 0.05;
-
-    var speed = Math.ceil(greatest/speedModifier);
-
-    return speed;
-
-}
 
 		</script>
 
